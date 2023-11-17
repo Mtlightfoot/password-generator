@@ -138,6 +138,10 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+
+  password = "";
+  passwordCharacterSet = [];
+
   getPasswordOptions();
 
   if (specialChars) {
@@ -168,9 +172,8 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
   var passwordText = document.querySelector('#password');
-
+  var password = generatePassword();
   passwordText.value = password;
 }
 
