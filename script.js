@@ -94,6 +94,7 @@ let specialChars;
 let numericChars;
 let lowercaseChars;
 let uppercaseChars;
+let passwordCharacterSet = [];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -127,12 +128,11 @@ function getRandom(arr) {
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
-  let passwordCharacterSet = [];
 
-  if (specialChars) {
-    passwordCharacterSet.concat(specialCharacters);
+  if (specialChars === true) {
+    passwordCharacterSet = passwordCharacterSet.concat(specialCharacters);
   }
-
+  
   if (numericChars) {
     passwordCharacterSet.concat(numericCharacters);
   }
