@@ -88,19 +88,68 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let amountOfCharacters = 0;
+let password = "";
+let specialChars;
+let numericChars;
+let lowercaseChars;
+let uppercaseChars;
+
 // Function to prompt user for password options
 function getPasswordOptions() {
 
+  // This code is to save how many characters the person wants into a variable
+  amountOfCharacters = prompt("How many characters would you like the password to contain, it must be between 8 and 128 characters");
+  if (amountOfCharacters < 8 || amountOfCharacters > 128) {
+    do {
+      alert("You must pick between 8 and 128 characters.");
+      amountOfCharacters = prompt("How many characters would you like the password to contain, it must be between 8 and 128 characters");
+    }
+    while (amountOfCharacters < 8 || amountOfCharacters > 128);
+  }
+
+  // This code is to save whether the person wants special characters included in their password
+  specialChars = confirm("Click OK to confirm including special characters");
+  // This code is to save whether the person wants numeric characters included in their password
+  numericChars = confirm("Click OK to confirm including numeric characters");
+  // This code is to save whether the person wants lowercase characters included in their password
+  lowercaseChars = confirm("Click OK to confirm including lowercase characters");
+  // This code is to save whether the person wants uppercase characters included in their password
+  uppercaseChars = confirm("Click OK to confirm including uppercase characters")
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  result = arr[Math.floor(Math.random() * arr.length)];
+  return result;
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();
+  let passwordCharacterSet = [];
 
+  if (specialChars) {
+    passwordCharacterSet.concat(specialCharacters);
+  }
+
+  if (numericChars) {
+    passwordCharacterSet.concat(numericCharacters);
+  }
+
+  if (lowercaseChars) {
+    passwordCharacterSet.concat(lowerCasedCharacters);
+  }
+
+  if (uppercaseChars) {
+    passwordCharacterSet.concat(upperCasedCharacters);
+  }
+
+  for (i = 0; i < amountOfCharacters; i++) {
+    password += getRandom(passwordCharacterSet);
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
