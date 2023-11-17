@@ -117,6 +117,17 @@ function getPasswordOptions() {
   lowercaseChars = confirm("Click OK to confirm including lowercase characters");
   // This code is to save whether the person wants uppercase characters included in their password
   uppercaseChars = confirm("Click OK to confirm including uppercase characters")
+
+  if (specialChars === false && numericChars === false && lowercaseChars === false && uppercaseChars === false) {
+    do {
+      alert("You must pick at least one type of character");
+      specialChars = confirm("Click OK to confirm including special characters");
+      numericChars = confirm("Click OK to confirm including numeric characters");
+      lowercaseChars = confirm("Click OK to confirm including lowercase characters");
+      uppercaseChars = confirm("Click OK to confirm including uppercase characters")
+    }
+    while (specialChars === false && numericChars === false && lowercaseChars === false && uppercaseChars === false);
+  }
 }
 
 // Function for getting a random element from an array
@@ -132,7 +143,7 @@ function generatePassword() {
   if (specialChars) {
     passwordCharacterSet = passwordCharacterSet.concat(specialCharacters);
   }
-  
+
   if (numericChars) {
     passwordCharacterSet = passwordCharacterSet.concat(numericCharacters);
   }
