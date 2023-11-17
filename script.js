@@ -129,20 +129,20 @@ function getRandom(arr) {
 function generatePassword() {
   getPasswordOptions();
 
-  if (specialChars === true) {
+  if (specialChars) {
     passwordCharacterSet = passwordCharacterSet.concat(specialCharacters);
   }
   
   if (numericChars) {
-    passwordCharacterSet.concat(numericCharacters);
+    passwordCharacterSet = passwordCharacterSet.concat(numericCharacters);
   }
 
   if (lowercaseChars) {
-    passwordCharacterSet.concat(lowerCasedCharacters);
+    passwordCharacterSet = passwordCharacterSet.concat(lowerCasedCharacters);
   }
 
   if (uppercaseChars) {
-    passwordCharacterSet.concat(upperCasedCharacters);
+    passwordCharacterSet = passwordCharacterSet.concat(upperCasedCharacters);
   }
 
   for (i = 0; i < amountOfCharacters; i++) {
